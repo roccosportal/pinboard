@@ -1,0 +1,5 @@
+[Info] Loaded: ~/Application/Configs/DefaultConfig.php,~/Application/Configs/Config.php
+[Include] /var/www/pinboard/Library/Pvik/Web/ErrorManager.php
+[Include] /var/www/pinboard/Library/Pvik/Web/RouteManager.php
+[Error] No route found for /favicon.ico/
+[Include] /var/www/pinboard/Library/Pvik/Web/NoRouteFoundException.php
