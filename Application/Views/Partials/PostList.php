@@ -1,5 +1,8 @@
 <ul class="media-list">
 	<?php $posts = $this->viewData->get('Posts');
+        if($posts->count() == 0){
+            ?><p class="lead">No posts</p><?php
+        }
         $posts->loadList('tagsPosts'); // perfomance optimation
 	foreach($posts as $post){
 		?>

@@ -19,7 +19,8 @@ self::$config['Routes'] = array(
     array ('Url' => '/page/{page}/', 'Controller' => 'Index', 'Action' => 'Index', 'Parameters' => array ('page' => "/^\d*$/")),
     array ('Url' => '/new/', 'Controller' => 'NewPost', 'Action' => 'Index'),
     array ('Url' => '/details/{post-id}/', 'Controller' => 'PostDetails', 'Action' => 'Index'),
-    array ('Url' => '/tag/{tag-name}/{tag-id}/', 'Controller' => 'Tag', 'Action' => 'Index', 'Parameters' => array ('tag-id' => "/^\d*$/"))
+    array ('Url' => '/tag/{tag-name}/{tag-id}/', 'Controller' => 'Tag', 'Action' => 'Index', 'Parameters' => array ('tag-id' => "/^\d*$/")),
+    array ('Url' => '/search/', 'Controller' => 'Search', 'Action' => 'Index'),
 );
 
 
