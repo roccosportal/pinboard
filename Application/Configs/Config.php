@@ -6,6 +6,9 @@ self::$config['NamespaceAssociations']['\\Pinboard'] = '~/application/';
 self::$config['Log']['On'] = true;
 self::$config['Log']['UseOneFile'] = true;
 
+
+self::$config['Database']['Adapter'] = 'MySQL';
+self::$config['Database']['Path'] = '\\Pvik\\Database\\Adapter\\MYSQL\\';
 self::$config['Database']['Server'] = 'localhost';
 self::$config['Database']['Username'] = 'root';
 self::$config['Database']['Password'] = 'root';

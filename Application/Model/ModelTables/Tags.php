@@ -1,13 +1,13 @@
 <?php
 namespace Pinboard\Model\ModelTables;
-
+use \Pvik\Database\ORM\FieldDefinition\Type;
 class Tags extends \Pvik\Database\ORM\ModelTable {
     public function __construct(){
         $this->tableName = 'tags';
         $this->entityName = 'Tag';
         $this->primaryKeyName = 'tagId';
-        $this->fieldDefinition['tagId'] = array ('Type' => 'PrimaryKey');
-        $this->fieldDefinition['text'] =  array ('Type' => 'Normal');
+        $this->fieldDefinition['tagId'] = array ('Type' => Type::PRIMARY_KEY);
+        $this->fieldDefinition['text'] =  array ('Type' => Type::NORMAL);
     }
 
 

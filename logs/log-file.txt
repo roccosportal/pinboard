@@ -11,8 +11,8 @@ Executing action: IndexAction
 [Include] /var/www/pinboard/Application/Model/Entities/Post.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/ModelTable.php
 [Include] /var/www/pinboard/Application/Model/ModelTables/Posts.php
-[Include] /var/www/pinboard/Library/Pvik/Database/ORM/FieldDefinition/Helper.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/FieldDefinition/Type.php
+[Include] /var/www/pinboard/Library/Pvik/Database/ORM/FieldDefinition/Helper.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Query/Builder/Insert.php
 [Include] /var/www/pinboard/Library/Pvik/Database/Adapter/Adapter.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Generic.php
@@ -21,14 +21,14 @@ Executing action: IndexAction
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Manager.php
 [Include] /var/www/pinboard/Library/Pvik/Database/Adapter/MYSQL/Manager.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Type.php
-Executing querystring: INSERT INTO posts ( name,text,created) VALUES ("test","test","2013.05.26 12:49:14") 
+Executing querystring: INSERT INTO posts ( name,text,created) VALUES ("test","test","2013.05.26 13:18:58") 
 [Include] /var/www/pinboard/Library/Pvik/Database/Cache/ModelTable.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Query/Builder/Update.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Update.php
-Executing querystring: UPDATE posts SET name="test", text="test", created="2013.05.26 12:49:14" WHERE postId=42 
+Executing querystring: UPDATE posts SET name="test", text="test", created="2013.05.26 13:18:58" WHERE postId=50 
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Query/Builder/Delete.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Delete.php
-Executing querystring: DELETE FROM posts WHERE postId=42 
+Executing querystring: DELETE FROM posts WHERE postId=50 
 Executing querystring: select count(posts.postId) as count From posts
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Query/Builder/Select.php
 [Include] /var/www/pinboard/Application/Model/ModelTables/Comments.php
