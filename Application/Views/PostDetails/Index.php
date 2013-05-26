@@ -1,37 +1,37 @@
-<?php $this->UseMasterPage('~/Application/Views/MasterPages/Master.php'); ?>
-<?php $this->StartContent('Main'); ?>
-	<?php $ValidationState = $this->ViewData->Get('ValidationState'); ?>
-	<?php $Request = $this->ViewData->Get('Request'); ?>
-	<?php $Post = $this->ViewData->Get('Post'); ?>
+<?php $this->useMasterPage('~/Application/Views/MasterPages/Master.php'); ?>
+<?php $this->startContent('Main'); ?>
+	<?php $validationState = $this->viewData->get('ValidationState'); ?>
+	<?php $request = $this->viewData->get('Request'); ?>
+	<?php $post = $this->viewData->get('Post'); ?>
 		<div class="row">
 			<div class="media">
-					<a class="pull-left" href="/details/<?php echo $Post->PostId ?>/">
-					<img class="media-object" src="<?php echo $Post->getGravatarSrc(); ?>">
+					<a class="pull-left" href="/details/<?php echo $post->postId ?>/">
+					<img class="media-object" src="<?php echo $post->getGravatarSrc(); ?>">
 					</a>
 					<div class="media-body">
-						<h4 class="media-heading"><?php echo $Post->Name;?></h4>
+						<h4 class="media-heading"><?php echo htmlentities($post->name);?></h4>
 						<p>
-						<small><i class="icon-time"></i> <?php echo $Post->Created; ?></small>
-						<small><i class="icon-comment"></i> <?php echo $Post->GetCommentsCount(); ?></small>
-						<small><i class="icon-tags"></i> <?php echo $Post->GetTagsListHtml(); ?></small>
+						<small><i class="icon-time"></i> <?php echo $post->created; ?></small>
+						<small><i class="icon-comment"></i> <?php echo $post->getCommentsCount(); ?></small>
+						<small><i class="icon-tags"></i> <?php echo $post->getTagsListHtml(); ?></small>
 						</p>
 						<p>
-	    				<?php echo $Post->Text;?>
+	    				<?php echo htmlentities($post->text);?>
 	    				</p>
 	    				Comments
 	    				<ul class="media-list">
-	    					<?php foreach($Post->Comments->Sort('Created') as $Comment){ ?>
+	    					<?php foreach($post->comments->sort('Created') as $comment){ ?>
 							  <li class="media">
 							    <a class="pull-left" href="#">
-							      <img class="media-object" src="<?php echo $Comment->getGravatarSrc(); ?>">
+							      <img class="media-object" src="<?php echo $comment->getGravatarSrc(); ?>">
 							    </a>
 							    <div class="media-body">
-							      <h4 class="media-heading"><?php echo $Comment->Name; ?></h4>
+							      <h4 class="media-heading"><?php echo $comment->name; ?></h4>
 							      <p>
-							      <small><i class="icon-time"></i> <?php echo $Post->Created; ?></small>
+							      <small><i class="icon-time"></i> <?php echo $post->created; ?></small>
 							      </p>
 									<p>
-							      <?php echo $Comment->Text; ?>
+							      <?php echo htmlentities($comment->text); ?>
 							      </p>
 							    </div>
 							  </li>
@@ -42,20 +42,20 @@
 					    		<legend>Create a new comment</legend>
 
 
-							    <div class="control-group <?php  echo $ValidationState->GetError('Name') ? 'error' : ''; ?>">
+							    <div class="control-group <?php  echo $validationState->getError('Name') ? 'error' : ''; ?>">
 								  <label class="control-label">Name*</label>
 								  <div class="controls">
-								    <input class="input-block-level" type="text" name="name" placeholder="Your name..." value="<?php echo $Request->IsPost('name') ? $Request->GetPost('name') : ''; ?>">
-								    <span class="help-inline"><?php  echo $ValidationState->GetError('Name'); ?></span>
+								    <input class="input-block-level" type="text" name="name" placeholder="Your name..." value="<?php echo $request->isPost('name') ? $request->getPost('name') : ''; ?>">
+								    <span class="help-inline"><?php  echo $validationState->getError('Name'); ?></span>
 								  </div>
 								</div>
 
 
-								 <div class="control-group <?php  echo $ValidationState->GetError('Text') ? 'error' : ''; ?>">
+								 <div class="control-group <?php  echo $validationState->getError('Text') ? 'error' : ''; ?>">
 								  <label class="control-label">Text*</label>
 								  <div class="controls">
-								    <textarea class="input-block-level" name="text" placeholder="Your text..."><?php echo $Request->IsPost('text') ? $Request->GetPost('text') : ''; ?></textarea>
-								    <span class="help-inline"><?php  echo $ValidationState->GetError('Text'); ?></span>
+								    <textarea class="input-block-level" name="text" placeholder="Your text..."><?php echo $request->isPost('text') ? $request->getPost('text') : ''; ?></textarea>
+								    <span class="help-inline"><?php  echo $validationState->getError('Text'); ?></span>
 								  </div>
 								</div>
 
@@ -65,6 +65,7 @@
 					</div>
 			</div>
 		</div>
-<?php $this->EndContent(); ?>
-<?php $this->StartContent('Side'); ?>
-<?php $this->EndContent(); ?>
+<?php $this->endContent(); ?>
+<?php $this->startContent('Side'); ?>
+<a href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>">Back home</a>
+<?php $this->endContent(); ?>

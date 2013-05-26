@@ -2,11 +2,11 @@
 namespace Pinboard\Model\Entities;
 
 /**
- * @property int $TagId
- * @property string $Text
+ * @property int $tagId
+ * @property string $text
  */
-class Tag extends \Pvik\Database\Generic\Entity {
+class Tag extends \Pvik\Database\ORM\Entity {
     public function __construct(){
-        $this->ModelTableName = 'Tags';
+        $this->modelTableName = 'Tags';
     }
 }

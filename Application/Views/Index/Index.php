@@ -1,31 +1,26 @@
-<?php $this->UseMasterPage('~/Application/Views/MasterPages/Master.php'); ?>
-<?php $this->StartContent('Main'); ?>
-	<?php $Posts = $this->ViewData->Get('Posts'); 
-	foreach($Posts as $Post){
+<?php $this->useMasterPage('~/Application/Views/MasterPages/Master.php'); ?>
+<?php $this->startContent('Main'); ?>
+	<?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/PostList.php')); ?> 
+	<div class="pagination">
+		<?php 
+		$currentPage = $this->viewData->get('CurrentPage'); 
+		$pageCount = $this->viewData->get('PageCount'); 
 		?>
-		<div class="row">
-			<div class="media">
-					<a class="pull-left" href="/details/<?php echo $Post->PostId ?>/">
-					<img class="media-object" src="<?php echo $Post->getGravatarSrc(); ?>">
-					</a>
-					<div class="media-body">
-						<h4 class="media-heading"><?php echo $Post->Name;?></h4>
-						<p>
-						<small><i class="icon-time"></i> <?php echo $Post->Created; ?></small>
-						<small><i class="icon-comment"></i> <?php echo $Post->GetCommentsCount(); ?></small>
-						<small><i class="icon-tags"></i> <?php echo $Post->GetTagsListHtml(); ?></small>
-						</p>
-						<p>
-	    			<?php echo $Post->Text;?>
-	    			</p>
-	    			<a class="pull-left" href="/details/<?php echo $Post->PostId ?>/">Details</a>
-					</div>
-			</div>
-		</div>
-		<?php
-	}
-	?>
-<?php $this->EndContent(); ?>
-<?php $this->StartContent('Side'); ?>
+	  <ul>
+	    <li <?php echo ($currentPage == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage) . '/'); ?>">Prev</a></li>
+	    <?php 
+	    for($i = 0; $i < $pageCount; $i++){
+	    	?>
+	    	<li <?php echo ($currentPage == $i) ? 'class="active"' : '' ?>>
+	    		<a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($i + 1) . '/'); ?>"><?php echo ($i + 1);?></a></li>
+	    	<?php
+	    }
+	    ?>
+	    <li <?php echo ($currentPage + 1 == $pageCount) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage + 2) . '/'); ?>">Next</a></li>
+	  </ul>
+	</div>
+<?php $this->endContent(); ?>
+<?php $this->startContent('Side'); ?>
 	<a href="/new/" class="btn btn-large btn-primary ">Create new post</a>
-<?php $this->EndContent(); ?>
+	<?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/Top20Tags.php')); ?> 
+<?php $this->endContent(); ?>

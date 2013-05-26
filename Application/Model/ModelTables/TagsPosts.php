@@ -1,23 +1,23 @@
 <?php
 namespace Pinboard\Model\ModelTables;
 
-class TagsPosts extends \Pvik\Database\Generic\ModelTable {
+class TagsPosts extends \Pvik\Database\ORM\ModelTable {
     public function __construct(){
-        $this->TableName = 'TagsPosts';
-        $this->EntityName = 'TagsPosts';
-        $this->PrimaryKeyName = 'TagsPostsId';
-        $this->FieldDefinition['TagsPostsId'] = array ('Type' => 'PrimaryKey');
-        $this->FieldDefinition['PostId'] =  array ('Type' => 'Normal');
+        $this->tableName = 'tagsPosts';
+        $this->entityName = 'TagsPosts';
+        $this->primaryKeyName = 'tagsPostsId';
+        $this->fieldDefinition['tagsPostsId'] = array ('Type' => 'PrimaryKey');
+        $this->fieldDefinition['postId'] =  array ('Type' => 'Normal');
 
 
-         $this->FieldDefinition['TagId'] = array(
+         $this->fieldDefinition['tagId'] = array(
               'Type' => 'ForeignKey', 
               'ModelTable' => 'Tags' 
         );
     
-        $this->FieldDefinition['Tag'] = array(
+        $this->fieldDefinition['tag'] = array(
                'Type' => 'ForeignObject',
-               'ForeignKey' => 'TagId'
+               'ForeignKey' => 'tagId'
        );
     }
 }

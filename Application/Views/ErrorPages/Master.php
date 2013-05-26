@@ -38,15 +38,15 @@ body {
         <div id="contentholder">
             <div id="error">Unfortunaly there was an unhandled expception and the site caused an error.<br />See below for error details.</div>
             <span>Message:</span>
-            <div id="message"><?php echo nl2br($Exception->getMessage()) ?></div>
+            <div id="message"><?php echo nl2br($exception->getMessage()) ?></div>
             <span>File:</span>
-            <div id="file">File  <?php echo  $Exception->getFile() ?> at line <?php echo  $Exception->getLine() ?></div>
+            <div id="file">File  <?php echo  $exception->getFile() ?> at line <?php echo  $exception->getLine() ?></div>
             <span>Stacktrace:</span>
-            <div id="stacktrace"><?php echo  nl2br($Exception->getTraceAsString()) ?></div>
+            <div id="stacktrace"><?php echo  nl2br($exception->getTraceAsString()) ?></div>
             <span>Logtrace:</span>
-            <div id="logtrace"><?php echo  nl2br(\Pvik\Core\Log::GetTrace()) ?></div>
+            <div id="logtrace"><?php echo  nl2br(\Pvik\Core\Log::getTrace()) ?></div>
             <span>Code:</span>
-            <div id="code"><?php echo  nl2br($Exception->getCode()) ?></div>
+            <div id="code"><?php echo  nl2br($exception->getCode()) ?></div>
         </div>
     </body>
 </html>

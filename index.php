@@ -4,19 +4,19 @@
     
     // set up path mapper
     require './Library/Pvik/Core/Path.php';
-    \Pvik\Core\Path::Init();
+    \Pvik\Core\Path::init();
     
     // set up class loader
-    require \Pvik\Core\Path::RealPath('~/Library/Pvik/Core/ClassLoader.php');
-    $ClassLoader = new \Pvik\Core\ClassLoader();
-    $ClassLoader->SetNamespaceAssociation('\\Pvik', '~/Library/Pvik/');
-    $ClassLoader->SetNamespaceAssociation('\\Pinboard', '~/Application/');
-    $ClassLoader->Init();
+    require \Pvik\Core\Path::realPath('~/Library/Pvik/Core/ClassLoader.php');
+    $classLoader = new \Pvik\Core\ClassLoader();
+    $classLoader->setNamespaceAssociation('\\Pvik', '~/Library/Pvik/');
+    $classLoader->setNamespaceAssociation('\\Pinboard', '~/Application/');
+    $classLoader->init();
     
     //require_once ("./library/pvik/core/core.php");
-    $Core = new \Pvik\Core\Core();
-    $Core->LoadConfig(array(
+    $core = new \Pvik\Core\Core();
+    $core->loadConfig(array(
 			'~/Application/Configs/DefaultConfig.php',
 			'~/Application/Configs/Config.php')
 			);
-    $Core->StartWeb();
+    $core->startWeb();

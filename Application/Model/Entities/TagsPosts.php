@@ -2,13 +2,13 @@
 namespace Pinboard\Model\Entities;
 
 /**
- * @property int $TagsPostId
- * @property int $TagId
- * @property int $PostId
- * @property \Pinboard\Model\Entities\Tag $Tag
+ * @property int $tagsPostId
+ * @property int $tagId
+ * @property int $postId
+ * @property \Pinboard\Model\Entities\Tag $tag
  */
-class TagsPosts extends \Pvik\Database\Generic\Entity {
+class TagsPosts extends \Pvik\Database\ORM\Entity {
     public function __construct(){
-        $this->ModelTableName = 'TagsPosts';
+        $this->modelTableName = 'TagsPosts';
     }
 }

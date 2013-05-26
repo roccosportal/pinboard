@@ -3,74 +3,74 @@
 namespace Pinboard\Controllers;
 
 class NewPost extends \Pvik\Web\Controller {
-    public function IndexAction(){
-        $ValidationState = new \Pvik\Utils\ValidationState();
-    	if($this->Request->IsPOST('submit')){
-			$Name = $this->Request->GetPOST('name');
-			$Text = $this->Request->GetPOST('text');
+    public function indexAction(){
+        $validationState = new \Pvik\Utils\ValidationState();
+    	if($this->request->isPOST('submit')){
+			$name = $this->request->getPOST('name');
+			$text = $this->request->getPOST('text');
 			
 		
-    		if(!$Name || empty($Name)){
-    			$ValidationState->SetError('Name', 'Field can not be empty');
+    		if(!$name || empty($name)){
+    			$validationState->setError('Name', 'Field can not be empty');
     		}
-    		else if(strlen($Name) < 4){
-    			$ValidationState->SetError('Name', 'Field too short.');
-    		}
-
-    		if(!$Text || empty($Text)){
-    			$ValidationState->SetError('Text', 'Field can not be empty');
-    		}
-    		else if(strlen($Text) < 20){
-    			$ValidationState->SetError('Text', 'Field too short.');
+    		else if(strlen($name) < 4){
+    			$validationState->setError('Name', 'Field too short.');
     		}
 
+    		if(!$text || empty($text)){
+    			$validationState->setError('Text', 'Field can not be empty');
+    		}
+    		else if(strlen($text) < 20){
+    			$validationState->setError('Text', 'Field too short.');
+    		}
 
-    		if($ValidationState->IsValid()){
-    			$Post = new \Pinboard\Model\Entities\Post();
-    			$Post->Name = $Name;
-    			$Post->Text = $Text;
-    			$Post->Insert();
 
-                $TagsString = $this->Request->GetPOST('tags');
-                $TagsString = str_replace(' ', '', $TagsString);
-                $TagsStringArray = preg_split('/,/', $TagsString);
-                foreach($TagsStringArray as $TagString){
-                    if(strlen($TagString) >= 4 && !preg_match('/[^A-Za-z0-9]/', $TagString)){
-                        $TagString = strtolower($TagString);
-                        $Query = new \Pvik\Database\Generic\Query('Tags');
-                        $Query->SetConditions('WHERE Tags.Text = "%s"');
-                        $Query->AddParameter($TagString);
-                        $Tag = $Query->SelectSingle();
-                        if($Tag == null){
-                            $Tag = new \Pinboard\Model\Entities\Tag();
-                            $Tag->Text = $TagString;
-                            $Tag->Insert();
+    		if($validationState->isValid()){
+    			$post = new \Pinboard\Model\Entities\Post();
+    			$post->name = $name;
+    			$post->text = $text;
+    			$post->insert();
+
+                $tagsString = $this->request->getPOST('tags');
+                $tagsString = str_replace(' ', '', $tagsString);
+                $tagsStringArray = preg_split('/,/', $tagsString);
+                foreach($tagsStringArray as $tagString){
+                    if(strlen($tagString) >= 4 && !preg_match('/[^A-Za-z0-9]/', $tagString)){
+                        $tagString = strtolower($tagString);
+                        $query = \Pvik\Database\ORM\ModelTable::get('Tags')->getEmptySelectBuilder();
+                        $query->where('tags.text = "%s"');
+                        $query->addParameter($tagString);
+                        $tag = $query->selectSingle();
+                        if($tag == null){
+                            $tag = new \Pinboard\Model\Entities\Tag();
+                            $tag->text = $tagString;
+                            $tag->insert();
                         }
 
-                        $TagsPost = new \Pinboard\Model\Entities\TagsPosts();
-                        $TagsPost->PostId = $Post->PostId;
-                        $TagsPost->TagId = $Tag->TagId;
-                        $TagsPost->Insert();
+                        $tagsPost = new \Pinboard\Model\Entities\TagsPosts();
+                        $tagsPost->postId = $post->postId;
+                        $tagsPost->tagId = $tag->tagId;
+                        $tagsPost->insert();
                     }
                 }
 
-                $Email = $this->Request->GetPOST('email');
-                if($Email && filter_var($Email, FILTER_VALIDATE_EMAIL)){
-                    $Subscriber = new \Pinboard\Model\Entities\Subscriber();
-                    $Subscriber->PostId = $Post->PostId;
-                    $Subscriber->Email = $Email;
-                    $Subscriber->Insert();
+                $email = $this->request->getPOST('email');
+                if($email && filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $subscriber = new \Pinboard\Model\Entities\Subscriber();
+                    $subscriber->postId = $post->postId;
+                    $subscriber->email = $email;
+                    $subscriber->insert();
                 }
 
 
-    			$this->RedirectToPath('~/details/' . $Post->PostId . '/');
+    			$this->redirectToPath('~/details/' . $post->postId . '/');
     		}
 
 
     	}
-        $this->ViewData->Set('ValidationState', $ValidationState);
-        $this->ViewData->Set('Request', $this->Request);
+        $this->viewData->set('ValidationState', $validationState);
+        $this->viewData->set('Request', $this->request);
 
-        $this->ExecuteView();
+        $this->executeView();
     }
 }

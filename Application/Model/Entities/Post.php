@@ -2,51 +2,51 @@
 namespace Pinboard\Model\Entities;
 
 /**
- * @property int $PostId
- * @property string $Name
- * @property string $Text
- * @property date $Created
- * @property \Pvik\Database\Generic\EntityArray $Comments
- * @property \Pvik\Database\Generic\EntityArray $TagsPosts
+ * @property int $postId
+ * @property string $name
+ * @property string $text
+ * @property date $created
+ * @property \Pvik\Database\ORM\EntityArray $comments
+ * @property \Pvik\Database\ORM\EntityArray $tagsPosts
  */
-class Post extends \Pvik\Database\Generic\Entity {
+class Post extends \Pvik\Database\ORM\Entity {
     public function __construct(){
-        $this->ModelTableName = 'Posts';
+        $this->modelTableName = 'Posts';
     }
 
-    public function Insert(){
-    	$this->Created = date('Y.m.d H:i:s');
-    	parent::Insert();
+    public function insert(){
+    	$this->created = date('Y.m.d H:i:s');
+    	return parent::insert();
     }
 
-    public function GetCommentsCount(){
-    	return count($this->GetKeys('Comments'));
+    public function getCommentsCount(){
+    	return count($this->getKeys('comments'));
     }
 
-    public function GetTagsListHtml(){
-    	$Html = '';
-    	$First = true;
-    	foreach($this->TagsPosts as $TagsPosts){
-    		if($First){
-    			$First = false;
+    public function getTagsListHtml(){
+    	$html = '';
+    	$first = true;
+    	foreach($this->tagsPosts as $tagsPosts){
+    		if($first){
+    			$first = false;
     		}
     		else {
-    			$Html .= ', ';
+    			$html .= ', ';
     		}
-    		$Html .= $TagsPosts->Tag->Text;
+    		$html .= $tagsPosts->tag->text;
     	}
 
-    	if(empty($Html)){
-    		$Html = '(none)';
+    	if(empty($html)){
+    		$html = '(none)';
     	}
 
 
 
 
-    	return $Html;
+    	return $html;
     }
 
     public function getGravatarSrc(){
-        return 'http://www.gravatar.com/avatar/' . md5($this->Name . '@'  . $_SERVER['SERVER_NAME']) . '?f=y&d=identicon&s=64';
+        return 'http://www.gravatar.com/avatar/' . md5($this->name . '@'  . $_SERVER['SERVER_NAME']) . '?f=y&d=identicon&s=64';
     }
 }

@@ -2,12 +2,12 @@
 namespace Pinboard\Model\Entities;
 
 /**
- * @property int $SubscriberId
- * @property int $PostId
- * @property string $Email
+ * @property int $subscriberId
+ * @property int $postId
+ * @property string $email
  */
-class Subscriber extends \Pvik\Database\Generic\Entity {
+class Subscriber extends \Pvik\Database\ORM\Entity {
     public function __construct(){
-        $this->ModelTableName = 'Subscribers';
+        $this->modelTableName = 'Subscribers';
     }
 }

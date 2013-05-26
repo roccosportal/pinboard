@@ -1,23 +1,23 @@
 <?php
 namespace Pinboard\Model\ModelTables;
 
-class Comments extends \Pvik\Database\Generic\ModelTable {
+class Comments extends \Pvik\Database\ORM\ModelTable {
     public function __construct(){
-        $this->TableName = 'Comments';
-        $this->EntityName = 'Comment';
-        $this->PrimaryKeyName = 'CommentId';
-        $this->FieldDefinition['CommentId'] = array ('Type' => 'PrimaryKey');
-        $this->FieldDefinition['Name'] =  array ('Type' => 'Normal');
+        $this->tableName = 'comments';
+        $this->entityName = 'Comment';
+        $this->primaryKeyName = 'commentId';
+        $this->fieldDefinition['commentId'] = array ('Type' => 'PrimaryKey');
+        $this->fieldDefinition['name'] =  array ('Type' => 'Normal');
 
-        $this->FieldDefinition['Text'] =  array ('Type' => 'Normal');
-        $this->FieldDefinition['Created'] =  array ('Type' => 'Normal');
+        $this->fieldDefinition['text'] =  array ('Type' => 'Normal');
+        $this->fieldDefinition['created'] =  array ('Type' => 'Normal');
 
-          $this->FieldDefinition['PostId'] = array(
+        $this->fieldDefinition['postId'] = array(
               'Type' => 'ForeignKey', 
               'ModelTable' => 'Posts' 
         );
     
-        $this->FieldDefinition['Post'] = array(
+        $this->fieldDefinition['post'] = array(
                'Type' => 'ForeignObject',
                'ForeignKey' => 'PostId'
        );
