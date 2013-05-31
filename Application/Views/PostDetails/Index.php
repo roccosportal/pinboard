@@ -72,5 +72,7 @@
 </div>
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
+    <h4>Info</h4>
+     <p>If you're wrong here then <a href="<?php echo \Pvik\Core\Path::relativePath('~/') ?>">go back to the home page</a>.</p>
     <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>

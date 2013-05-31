@@ -73,6 +73,10 @@ class NewPost extends \Pvik\Web\Controller {
 
 
     	}
+        
+        $topTags = \Pvik\Database\ORM\ModelTable::get('Tags')->getTopTags(50);
+        $this->viewData->set('TopTags', $topTags);
+        
         $this->viewData->set('ValidationState', $validationState);
         $this->viewData->set('Request', $this->request);
         $this->viewData->set('currentPage', 'create_post');

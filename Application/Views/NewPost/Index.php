@@ -41,4 +41,8 @@
 	</form>
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
+    <h4>Info</h4>
+    <p>Here you can create a new post. Just leave a name and a text here. An email address is not required but you will get notifications when somebody adds a comment. You should add tags to your post, so people can find interests better.</p>
+    <p>If you're wrong here then <a href="<?php echo \Pvik\Core\Path::relativePath('~/') ?>">go back to the home page</a>.</p>
+        <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>

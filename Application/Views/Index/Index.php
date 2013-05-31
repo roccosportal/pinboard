@@ -21,5 +21,7 @@
 	</div>
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
+    <h4>Welcome</h4>
+    <p>Here you have list of the latest posts. You can <a href="<?php echo Pvik\Core\Path::relativePath('~/new/') ?>">create a post</a> by yourself.</p>
     <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>
