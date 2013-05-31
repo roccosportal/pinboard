@@ -1,11 +1,8 @@
 [Info] Loaded: ~/Application/Configs/DefaultConfig.php,~/Application/Configs/Config.php
 [Include] /var/www/pinboard/Library/Pvik/Web/ErrorManager.php
 [Include] /var/www/pinboard/Library/Pvik/Web/RouteManager.php
-Route matching: /page/{page}/
 [Include] /var/www/pinboard/Library/Pvik/Web/Request.php
 [Include] /var/www/pinboard/Library/Pvik/Utils/KeyValueArray.php
-[Include] /var/www/pinboard/Library/Pvik/Utils/KeyValuePair.php
-Url parameter: page -> /^\d*$/ -> 2
 [Include] /var/www/pinboard/Library/Pvik/Web/ControllerManager.php
 [Include] /var/www/pinboard/Library/Pvik/Web/Controller.php
 [Include] /var/www/pinboard/Application/Controllers/Index.php
@@ -25,7 +22,7 @@ Executing querystring: select count(posts.postId) as count From posts
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Generic.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Select.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Statement.php
-Executing querystring: SELECT posts.postId, posts.name, posts.text, posts.created, GROUP_CONCAT(DISTINCT JoinAlias_comments.commentId) as comments, GROUP_CONCAT(DISTINCT JoinAlias_tagsPosts.tagsPostsId) as tagsPosts, GROUP_CONCAT(DISTINCT JoinAlias_subscribers.subscriberId) as subscribers FROM posts  LEFT JOIN comments as JoinAlias_comments ON JoinAlias_comments.postId = posts.postId LEFT JOIN tagsPosts as JoinAlias_tagsPosts ON JoinAlias_tagsPosts.postId = posts.postId LEFT JOIN subscribers as JoinAlias_subscribers ON JoinAlias_subscribers.postId = posts.postId   GROUP BY posts.postId ORDER BY posts.created DESC LIMIT 10,10 
+Executing querystring: SELECT posts.postId, posts.name, posts.text, posts.created, GROUP_CONCAT(DISTINCT JoinAlias_comments.commentId) as comments, GROUP_CONCAT(DISTINCT JoinAlias_tagsPosts.tagsPostsId) as tagsPosts, GROUP_CONCAT(DISTINCT JoinAlias_subscribers.subscriberId) as subscribers FROM posts  LEFT JOIN comments as JoinAlias_comments ON JoinAlias_comments.postId = posts.postId LEFT JOIN tagsPosts as JoinAlias_tagsPosts ON JoinAlias_tagsPosts.postId = posts.postId LEFT JOIN subscribers as JoinAlias_subscribers ON JoinAlias_subscribers.postId = posts.postId   GROUP BY posts.postId ORDER BY posts.created DESC LIMIT 10 
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/EntityArray.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Entity.php
 [Include] /var/www/pinboard/Application/Model/Entities/Post.php
@@ -33,8 +30,12 @@ Executing querystring: SELECT posts.postId, posts.name, posts.text, posts.create
 [Include] /var/www/pinboard/Application/Model/ModelTables/Tags.php
 Executing querystring: SELECT tags.tagId, tags.text, count(tagsPostsCount.tagsPostsId) as count FROM tags   INNER JOIN tagsPosts as tagsPostsCount ON tagsPostsCount.tagId = tags.tagId  GROUP BY tags.tagId ORDER BY count Desc LIMIT 50 
 [Include] /var/www/pinboard/Application/Model/Entities/Tag.php
+[Include] /var/www/pinboard/Library/Pvik/Utils/KeyValuePair.php
 Executing view: /var/www/pinboard/Application/Views/Index/Index.php
 [Include] /var/www/pinboard/Library/Pvik/Web/View.php
 [Include] /var/www/pinboard/Library/Pvik/Web/ViewHelpers/HtmlHelper.php
+[Include] /var/www/pinboard/Library/Pvik/Database/SQL/Type.php
+Executing querystring: SELECT tagsPosts.tagsPostsId, tagsPosts.postId, tagsPosts.tagId FROM tagsPosts   WHERE tagsPosts.tagsPostsId IN (21,22,23,19,20,17,18,16,13,14,15)    
+[Include] /var/www/pinboard/Application/Model/Entities/TagsPosts.php
 Executing masterpage: ~/Application/Views/MasterPages/Master.php
 [Include] /var/www/pinboard/Library/Pvik/Web/MasterPage.php

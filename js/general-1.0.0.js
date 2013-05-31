@@ -5,4 +5,8 @@ $.fn.tagcloud.defaults = {
 
 $(function () {
   $('#tagcloud a').tagcloud();
+  
+  $('div.pagination li.disabled a').click(function(e){
+      e.preventDefault();
+  })
 });

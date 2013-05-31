@@ -6,7 +6,7 @@
     
     <!-- Bootstrap -->
     <link href="<?php echo \Pvik\Core\Path::relativePath('~/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
-    <link href="<?php echo \Pvik\Core\Path::relativePath('~/css/style.css'); ?>" rel="stylesheet" media="screen">
+    <link href="<?php echo \Pvik\Core\Path::relativePath('~/css/style-' . \Pvik\Core\Config::$config['Version'] .'.css'); ?>" rel="stylesheet" media="screen">
     
   </head>
   <body>
@@ -32,10 +32,18 @@
 	         <?php $this->useContent('Side'); ?>
 	    </div>
         </div>
+        <div class="row" id="footer">
+            <div class="span5 offset7">
+                    <p>
+                      <small>You can find the source code at <a href="https://github.com/roccosportal/pinboard/">Github</a>. This is version <?php echo \Pvik\Core\Config::$config['Version']?></a>.
+                      </small>
+                    </p>
+            </div>
+	</div>
     </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/jquery.tagcloud.js'); ?>"></script>
-    <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/general.js'); ?>"></script>
+    <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/general-' . \Pvik\Core\Config::$config['Version'] .'.js'); ?>"></script>
   </body>
 </html>
