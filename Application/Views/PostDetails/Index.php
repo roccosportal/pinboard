@@ -19,7 +19,7 @@
         </p>
         <h3>Comments</h3>
         <ul class="media-list">
-            <?php foreach ($post->comments->sort('Created') as $comment) { ?>
+            <?php foreach ($post->comments->sort('created') as $comment) { ?>
                 <li class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="<?php echo $comment->getGravatarSrc(); ?>">

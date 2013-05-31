@@ -16,7 +16,7 @@
 	    	<?php
 	    }
 	    ?>
-	    <li <?php echo ($currentPage + 1 == $pageCount) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage + 2) . '/'); ?>">Next</a></li>
+	    <li <?php echo ($currentPage + 1 == $pageCount || $pageCount == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage + 2) . '/'); ?>">Next</a></li>
 	  </ul>
 	</div>
 <?php $this->endContent(); ?>
