@@ -3,7 +3,7 @@
   <head>
     <title>Pinboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+    <meta charset="utf-8" />
     <!-- Bootstrap -->
     <link href="<?php echo \Pvik\Core\Path::relativePath('~/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
     <link href="<?php echo \Pvik\Core\Path::relativePath('~/css/style-' . \Pvik\Core\Config::$config['Version'] .'.css'); ?>" rel="stylesheet" media="screen">
