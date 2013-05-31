@@ -70,7 +70,7 @@
         </form>
     </div>
 </div>
-
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
+    <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>
