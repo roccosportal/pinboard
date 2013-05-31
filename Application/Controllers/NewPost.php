@@ -33,7 +33,10 @@ class NewPost extends \Pvik\Web\Controller {
 
                 $tagsString = $this->request->getPOST('tags');
                 $tagsString = str_replace(' ', '', $tagsString);
-                $tagsStringArray = preg_split('/,/', $tagsString);
+                $tagsStringArray = array_unique(preg_split('/,/', $tagsString));
+                
+                
+                
                 foreach($tagsStringArray as $tagString){
                     if(strlen($tagString) >= 4 && !preg_match('/[^A-Za-z0-9]/', $tagString)){
                         $tagString = strtolower($tagString);
@@ -47,10 +50,12 @@ class NewPost extends \Pvik\Web\Controller {
                             $tag->insert();
                         }
 
+       
                         $tagsPost = new \Pinboard\Model\Entities\TagsPosts();
                         $tagsPost->postId = $post->postId;
                         $tagsPost->tagId = $tag->tagId;
                         $tagsPost->insert();
+
                     }
                 }
 
@@ -70,6 +75,7 @@ class NewPost extends \Pvik\Web\Controller {
     	}
         $this->viewData->set('ValidationState', $validationState);
         $this->viewData->set('Request', $this->request);
+        $this->viewData->set('currentPage', 'create_post');
 
         $this->executeView();
     }

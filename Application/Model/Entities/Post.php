@@ -8,6 +8,7 @@ namespace Pinboard\Model\Entities;
  * @property date $created
  * @property \Pvik\Database\ORM\EntityArray $comments
  * @property \Pvik\Database\ORM\EntityArray $tagsPosts
+ * @property \Pvik\Database\ORM\EntityArray $subscribers
  */
 class Post extends \Pvik\Database\ORM\Entity {
     public function __construct(){

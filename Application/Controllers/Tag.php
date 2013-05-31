@@ -15,8 +15,8 @@ class Tag extends \Pvik\Web\Controller {
 
         $this->viewData->set('Posts', $posts);
 
-        $top20Tags = \Pvik\Database\ORM\ModelTable::get('Tags')->getTopTags(20);
-        $this->viewData->set('Top20Tags', $top20Tags);
+        $topTags = \Pvik\Database\ORM\ModelTable::get('Tags')->getTopTags(50);
+        $this->viewData->set('TopTags', $topTags);
         
         $this->executeView();
     }

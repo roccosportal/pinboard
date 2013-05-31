@@ -10,17 +10,32 @@
     
   </head>
   <body>
+    <?php $currentPage = $this->viewData->get('currentPage'); ?>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <a class="brand" href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>">Pinboard</a>
+            <ul class="nav">
+              <li <?php echo ($currentPage=='home') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>">Home</a></li>
+              <li <?php echo ($currentPage=='create_post') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/new/'); ?>">Create Post</a></li>
+              <li <?php echo ($currentPage=='search') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/search/'); ?>">Search</a></li>
+            </ul>
+          </div>
+        </div>
+    </div>
     <div class="container">
-	  <div class="row">
+        <div class="row">
 	    <div class="span8">
 	         <?php $this->useContent('Main'); ?>
 	    </div>
 	    <div class="span4">
 	         <?php $this->useContent('Side'); ?>
 	    </div>
-	  </div>
-	</div>
+        </div>
+    </div>
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/bootstrap.min.js'); ?>"></script>
+    <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/jquery.tagcloud.js'); ?>"></script>
+    <script src="<?php echo \Pvik\Core\Path::relativePath('~/js/general.js'); ?>"></script>
   </body>
 </html>

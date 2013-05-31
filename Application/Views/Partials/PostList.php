@@ -20,7 +20,7 @@
 						<p>
 		    			<?php echo htmlentities($post->text);?>
 		    			</p>
-	    				<a class="pull-left" href="/details/<?php echo $post->postId ?>/">Details</a>
+                                        <a class="pull-left" href="<?php echo \Pvik\Core\Path::relativePath('~/details/' . $post->postId . '/') ?>">Details</a>
 					</div>
 			</div>
 		<?php

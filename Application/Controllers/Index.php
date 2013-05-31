@@ -32,11 +32,12 @@ class Index extends \Pvik\Web\Controller {
             $posts = array();
         }
 
-        $top20Tags = \Pvik\Database\ORM\ModelTable::get('Tags')->getTopTags(20);
-        $this->viewData->set('Top20Tags', $top20Tags);
-	    $this->viewData->set('Posts', $posts);
-	    $this->viewData->set('CurrentPage', $currentPage);
-	    $this->viewData->set('PageCount', $pageCount);
+        $topTags = \Pvik\Database\ORM\ModelTable::get('Tags')->getTopTags(50);
+        $this->viewData->set('TopTags', $topTags);
+        $this->viewData->set('Posts', $posts);
+        $this->viewData->set('CurrentPage', $currentPage);
+        $this->viewData->set('PageCount', $pageCount);
+        $this->viewData->set('currentPage', 'home');
         
         $this->executeView();
     }

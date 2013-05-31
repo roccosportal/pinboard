@@ -22,6 +22,13 @@ class Posts extends \Pvik\Database\ORM\ModelTable {
              'ModelTable' => 'TagsPosts', 
              'ForeignKey' => 'postId' 
         );     
+        
+        
+         $this->fieldDefinition['subscribers'] = array (
+             'Type' => Type::MANY_FOREIGN_OBJECTS, 
+             'ModelTable' => 'Subscribers', 
+             'ForeignKey' => 'postId' 
+        );     
     }
 
     public function getPostCount(){

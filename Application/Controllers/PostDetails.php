@@ -42,7 +42,32 @@ class PostDetails extends \Pvik\Web\Controller {
                 $comment->name = $name;
                 $comment->text = $text;
                 $comment->insert();
+                
+               $notificationMailer = new \Pinboard\Library\NotificationMailer();
+               $notificationMailer->publishNotification($post);
             }
+            
+            $email = $this->request->getPOST('email');
+            if($email && filter_var($email, FILTER_VALIDATE_EMAIL)){
+                $alreadyExists = false;
+                foreach($post->subscribers as $subscriber){
+                    if($subscriber->email == $email){
+                        $alreadyExists = true;
+                        break;
+                    }
+                }
+                
+                
+                if(!$alreadyExists){
+                    $subscriber = new \Pinboard\Model\Entities\Subscriber();
+                    $subscriber->postId = $post->postId;
+                    $subscriber->email = $email;
+                    $subscriber->insert();
+                }
+            }
+            
+            
+           
         }
         
         $this->viewData->set('ValidationState', $validationState);
