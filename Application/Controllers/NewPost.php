@@ -26,8 +26,8 @@ class NewPost extends \Pvik\Web\Controller {
 
             if ($validationState->isValid()) {
                 $post = new \Pinboard\Model\Entities\Post();
-                $post->name = utf8_decode($name);
-                $post->text = utf8_decode($text);
+                $post->name = $name;
+                $post->text = $text;
                 $post->insert();
 
                 $tagsString = $this->request->getPOST('tags');

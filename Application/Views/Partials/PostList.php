@@ -11,14 +11,14 @@
 					<img class="media-object" src="<?php echo $post->getGravatarSrc(); ?>">
 					</a>
 					<div class="media-body">
-						<h4 class="media-heading"><?php echo htmlentities($post->name);?></h4>
+                                            <h4 class="media-heading"><?php echo htmlentities(utf8_decode($post->name));?></h4>
 						<p>
 						<small><i class="icon-time"></i> <?php echo $post->created; ?></small>
 						<small><i class="icon-comment"></i> <?php echo $post->getCommentsCount(); ?></small>
 						<small><i class="icon-tags"></i> <?php echo $post->getTagsListHtml(); ?></small>
 						</p>
 						<p>
-		    			<?php echo htmlentities($post->text);?>
+		    			<?php echo htmlentities(utf8_decode($post->text));?>
 		    			</p>
                                         <a class="pull-left" href="<?php echo \Pvik\Core\Path::relativePath('~/details/' . $post->postId . '/') ?>">Details</a>
 					</div>

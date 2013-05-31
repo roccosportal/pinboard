@@ -39,8 +39,8 @@ class PostDetails extends \Pvik\Web\Controller {
             if($validationState->isValid()){
                 $comment = new \Pinboard\Model\Entities\Comment();
                 $comment->postId = $post->postId;
-                $comment->name = utf8_decode($name);
-                $comment->text = utf8_decode($text);
+                $comment->name = $name;
+                $comment->text = $text;
                 $comment->insert();
                 
                $notificationMailer = new \Pinboard\Library\NotificationMailer();
