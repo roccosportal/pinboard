@@ -34,7 +34,7 @@ class Post extends \Pvik\Database\ORM\Entity {
     		else {
     			$html .= ', ';
     		}
-    		$html .= $tagsPosts->tag->text;
+    		$html .= '<a href="'.\Pvik\Core\Path::relativePath('~/tag/' . $tagsPosts->tag->text . '/' . $tagsPosts->tag->tagId . '/') .'">' . $tagsPosts->tag->text . '</a>';
     	}
 
     	if(empty($html)){
