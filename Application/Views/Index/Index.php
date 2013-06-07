@@ -7,7 +7,7 @@
 		$pageCount = $this->viewData->get('PageCount'); 
 		?>
 	  <ul>
-	    <li <?php echo ($currentPage == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage) . '/'); ?>">Prev</a></li>
+	    <li <?php echo ($currentPage == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage) . '/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Index']['Prev']; ?></a></li>
 	    <?php 
 	    for($i = 0; $i < $pageCount; $i++){
 	    	?>
@@ -16,12 +16,12 @@
 	    	<?php
 	    }
 	    ?>
-	    <li <?php echo ($currentPage + 1 == $pageCount || $pageCount == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage + 2) . '/'); ?>">Next</a></li>
+	    <li <?php echo ($currentPage + 1 == $pageCount || $pageCount == 0) ? 'class="disabled"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/page/' . ($currentPage + 2) . '/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Index']['Next']; ?></a></li>
 	  </ul>
 	</div>
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
-    <h4>Welcome</h4>
-    <p>Here you have list of the latest posts. You can <a href="<?php echo Pvik\Core\Path::relativePath('~/new/') ?>">create a post</a> by yourself.</p>
+     <h4><?php echo \Pvik\Core\Config::$config['Translations']['Index']['Welcome']; ?></h4>
+     <p><?php echo \Pvik\Core\Config::$config['Translations']['Index']['WelcomeText']; ?></p>
     <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>

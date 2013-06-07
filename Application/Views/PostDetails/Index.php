@@ -38,41 +38,41 @@
         </ul>
         <form method="POST">
             <fieldset>
-                <legend>Create a new comment</legend>
+                <legend><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['NewComment']; ?></legend>
 
 
                 <div class="control-group <?php echo $validationState->getError('Name') ? 'error' : ''; ?>">
-                    <label class="control-label">Name <small>(required)</small></label>
+                    <label class="control-label"><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Name']; ?> <small><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Required']; ?></small></label>
                     <div class="controls">
-                        <input class="input-block-level" type="text" name="name" placeholder="Your name..." value="<?php echo $request->isPost('name') ? $request->getPost('name') : ''; ?>">
+                        <input class="input-block-level" type="text" name="name" placeholder="<?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['NamePlaceholder']; ?>" value="<?php echo $request->isPost('name') ? $request->getPost('name') : ''; ?>">
                         <span class="help-inline"><?php echo $validationState->getError('Name'); ?></span>
                     </div>
                 </div>
 
 
                 <div class="control-group <?php echo $validationState->getError('Text') ? 'error' : ''; ?>">
-                    <label class="control-label">Text <small>(required)</small></label>
+                    <label class="control-label"><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Text']; ?> <small><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Required']; ?></small></label>
                     <div class="controls">
-                        <textarea class="input-block-level" name="text" placeholder="Your text..."><?php echo $request->isPost('text') ? $request->getPost('text') : ''; ?></textarea>
+                        <textarea class="input-block-level" name="text" placeholder="<?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['TextPlaceholder']; ?>"><?php echo $request->isPost('text') ? $request->getPost('text') : ''; ?></textarea>
                         <span class="help-inline"><?php echo $validationState->getError('Text'); ?></span>
                     </div>
                 </div>
                 <div class="control-group">
-                    <label>Email <small>(NOT required)</small></label>
+                    <label><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Email']; ?> <small><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['NotRequired']; ?></small></label>
                     <div class="controls">
-                        <span class="help-block"><small>Fill in for automatical notification.</small></span>
-                        <input class="input-block-level" type="text" name="email" placeholder="Your email adress..." value="<?php echo $request->isPost('email') ? $request->getPost('email') : ''; ?>">
+                        <span class="help-block"><small><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['EmailHelp']; ?></small></span>
+                        <input class="input-block-level" type="text" name="email" placeholder="<?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['EmailPlaceholder']; ?>" value="<?php echo $request->isPost('email') ? $request->getPost('email') : ''; ?>">
                     </div>
                 </div>
 
-                <button type="submit" name="submit" class="btn">Submit</button>
+                <button type="submit" name="submit" class="btn"><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Submit']; ?></button>
             </fieldset>
         </form>
     </div>
 </div>
 <?php $this->endContent(); ?>
 <?php $this->startContent('Side'); ?>
-    <h4>Info</h4>
-     <p>If you're wrong here then <a href="<?php echo \Pvik\Core\Path::relativePath('~/') ?>">go back to the home page</a>.</p>
+    <h4><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Info']; ?></h4>
+     <p><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['GoBack']; ?></p>
     <?php include (\Pvik\Core\Path::realPath('~/Application/Views/Partials/TopTags.php')); ?> 
 <?php $this->endContent(); ?>

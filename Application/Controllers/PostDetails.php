@@ -23,17 +23,17 @@ class PostDetails extends \Pvik\Web\Controller {
 
 
             if(!$name || empty($name)){
-                $validationState->setError('Name', 'Field can not be empty');
+                $validationState->setError('Name', \Pvik\Core\Config::$config['Translations']['PostDetails']['ErrorFieldEmpty']);
             }
             else if(strlen($name) < 4){
-                $validationState->setError('Name', 'Field too short.');
+                $validationState->setError('Name', \Pvik\Core\Config::$config['Translations']['PostDetails']['ErrorFieldTooShort']);
             }
 
             if(!$text || empty($text)){
-                $validationState->setError('Text', 'Field can not be empty');
+                $validationState->setError('Text', \Pvik\Core\Config::$config['Translations']['PostDetails']['ErrorFieldEmpty']);
             }
             else if(strlen($text) < 20){
-                $validationState->setError('Text', 'Field too short.');
+                $validationState->setError('Text', \Pvik\Core\Config::$config['Translations']['PostDetails']['ErrorFieldTooShort']);
             }
 
             if($validationState->isValid()){

@@ -14,11 +14,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
-            <a class="brand" href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>">Pinboard</a>
+            <a class="brand" href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Navigation']['Pinboard']; ?></a>
             <ul class="nav">
-              <li <?php echo ($currentPage=='home') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>">Home</a></li>
-              <li <?php echo ($currentPage=='create_post') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/new/'); ?>">Create Post</a></li>
-              <li <?php echo ($currentPage=='search') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/search/'); ?>">Search</a></li>
+              <li <?php echo ($currentPage=='home') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Navigation']['Home']; ?></a></li>
+              <li <?php echo ($currentPage=='create_post') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/new/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Navigation']['CreatePost']; ?></a></li>
+              <li <?php echo ($currentPage=='search') ? 'class="active"' : '' ?>><a href="<?php echo \Pvik\Core\Path::relativePath('~/search/'); ?>"><?php echo \Pvik\Core\Config::$config['Translations']['Navigation']['Search']; ?></a></li>
             </ul>
           </div>
         </div>
@@ -35,8 +35,7 @@
         <div class="row" id="footer">
             <div class="span5 offset7">
                     <p>
-                      <small>You can find the source code at <a href="https://github.com/roccosportal/pinboard/">Github</a>. This is version <?php echo \Pvik\Core\Config::$config['Version']?></a>.
-                      </small>
+                      <small><?php echo \Pvik\Core\Config::$config['Translations']['Footer']['SourceCode']; ?></small>
                     </p>
             </div>
 	</div>

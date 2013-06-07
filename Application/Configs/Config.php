@@ -29,4 +29,9 @@ self::$config['NotificationMailer']['From'] = 'noreply@example.com';
 
 self::$config['Version'] = '1.0.0';
 
+$language = 'en';
+self::$config['Translations'] = array();
+include Pvik\Core\Path::realPath('~/Application/Configs/Translations/' . $language . '.php');
+
+
 ?>
