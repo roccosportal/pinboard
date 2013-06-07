@@ -4,7 +4,7 @@
 <?php $request = $this->viewData->get('Request'); ?>
 <form method="POST">
     <fieldset>
-        <legend>Create a new post</legend>
+        <legend><?php echo \Pvik\Core\Config::$config['Translations']['NewPost']['NewPost']; ?></legend>
         <div class="control-group <?php echo $validationState->getError('Name') ? 'error' : ''; ?>">
             <label class="control-label"><?php echo \Pvik\Core\Config::$config['Translations']['NewPost']['Name']; ?> <small><?php echo \Pvik\Core\Config::$config['Translations']['NewPost']['Required']; ?></small></label>
             <div class="controls">

@@ -16,6 +16,7 @@ self::$config['Translations']['Index']['Next'] = 'Vor';
 self::$config['Translations']['Index']['Prev'] = 'Zurück';
 
 self::$config['Translations']['NewPost'] = array();
+self::$config['Translations']['NewPost']['NewPost'] = 'Verfasse einen neuen Beitrag';
 self::$config['Translations']['NewPost']['Required'] = '(benötigt)';
 self::$config['Translations']['NewPost']['NotRequired'] = '(NICHT benötigt)';
 self::$config['Translations']['NewPost']['Name'] = 'Name';
