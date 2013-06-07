@@ -1,32 +1,43 @@
 [Info] Loaded: ~/Application/Configs/DefaultConfig.php,~/Application/Configs/Config.php
 [Include] /var/www/pinboard/Library/Pvik/Web/ErrorManager.php
 [Include] /var/www/pinboard/Library/Pvik/Web/RouteManager.php
+Route matching: /details/{post-id}/
 [Include] /var/www/pinboard/Library/Pvik/Web/Request.php
 [Include] /var/www/pinboard/Library/Pvik/Utils/KeyValueArray.php
+[Include] /var/www/pinboard/Library/Pvik/Utils/KeyValuePair.php
+Url parameter: post-id -> 51
 [Include] /var/www/pinboard/Library/Pvik/Web/ControllerManager.php
 [Include] /var/www/pinboard/Library/Pvik/Web/Controller.php
-[Include] /var/www/pinboard/Application/Controllers/NewPost.php
+[Include] /var/www/pinboard/Application/Controllers/PostDetails.php
 Executing action: IndexAction
-[Include] /var/www/pinboard/Library/Pvik/Utils/ValidationState.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/ModelTable.php
-[Include] /var/www/pinboard/Application/Model/ModelTables/Tags.php
+[Include] /var/www/pinboard/Application/Model/ModelTables/Posts.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/FieldDefinition/Type.php
+[Include] /var/www/pinboard/Library/Pvik/Database/Cache/ModelTable.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Query/Builder/Select.php
 [Include] /var/www/pinboard/Library/Pvik/Database/Adapter/Adapter.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/FieldDefinition/Helper.php
+[Include] /var/www/pinboard/Application/Model/ModelTables/Comments.php
+[Include] /var/www/pinboard/Application/Model/ModelTables/TagsPosts.php
+[Include] /var/www/pinboard/Application/Model/ModelTables/Subscribers.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Generic.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Builder/Select.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Statement/Statement.php
 [Include] /var/www/pinboard/Library/Pvik/Database/SQL/Manager.php
 [Include] /var/www/pinboard/Library/Pvik/Database/Adapter/MYSQL/Manager.php
-Executing querystring: SELECT tags.tagId, tags.text, count(tagsPostsCount.tagsPostsId) as count FROM tags   INNER JOIN tagsPosts as tagsPostsCount ON tagsPostsCount.tagId = tags.tagId  GROUP BY tags.tagId ORDER BY count Desc LIMIT 50 
+[Include] /var/www/pinboard/Library/Pvik/Database/SQL/Type.php
+Executing querystring: SELECT posts.postId, posts.name, posts.text, posts.created, GROUP_CONCAT(DISTINCT JoinAlias_comments.commentId) as comments, GROUP_CONCAT(DISTINCT JoinAlias_tagsPosts.tagsPostsId) as tagsPosts, GROUP_CONCAT(DISTINCT JoinAlias_subscribers.subscriberId) as subscribers FROM posts  LEFT JOIN comments as JoinAlias_comments ON JoinAlias_comments.postId = posts.postId LEFT JOIN tagsPosts as JoinAlias_tagsPosts ON JoinAlias_tagsPosts.postId = posts.postId LEFT JOIN subscribers as JoinAlias_subscribers ON JoinAlias_subscribers.postId = posts.postId  WHERE posts.postId = 51 GROUP BY posts.postId   
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/EntityArray.php
 [Include] /var/www/pinboard/Library/Pvik/Database/ORM/Entity.php
+[Include] /var/www/pinboard/Application/Model/Entities/Post.php
+[Include] /var/www/pinboard/Library/Pvik/Utils/ValidationState.php
+[Include] /var/www/pinboard/Application/Model/ModelTables/Tags.php
+Executing querystring: SELECT tags.tagId, tags.text, count(tagsPostsCount.tagsPostsId) as count FROM tags   INNER JOIN tagsPosts as tagsPostsCount ON tagsPostsCount.tagId = tags.tagId  GROUP BY tags.tagId ORDER BY count Desc LIMIT 50 
 [Include] /var/www/pinboard/Application/Model/Entities/Tag.php
-[Include] /var/www/pinboard/Library/Pvik/Database/Cache/ModelTable.php
-[Include] /var/www/pinboard/Library/Pvik/Utils/KeyValuePair.php
-Executing view: /var/www/pinboard/Application/Views/NewPost/Index.php
+Executing view: /var/www/pinboard/Application/Views/PostDetails/Index.php
 [Include] /var/www/pinboard/Library/Pvik/Web/View.php
 [Include] /var/www/pinboard/Library/Pvik/Web/ViewHelpers/HtmlHelper.php
+Executing querystring: SELECT comments.commentId, comments.name, comments.text, comments.created, comments.postId FROM comments   WHERE comments.commentId IN (7)    
+[Include] /var/www/pinboard/Application/Model/Entities/Comment.php
 Executing masterpage: ~/Application/Views/MasterPages/Master.php
 [Include] /var/www/pinboard/Library/Pvik/Web/MasterPage.php

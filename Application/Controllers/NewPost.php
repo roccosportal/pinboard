@@ -9,8 +9,12 @@ class NewPost extends \Pvik\Web\Controller {
         if ($this->request->isPOST('submit')) {
             $name = $this->request->getPOST('name');
             $text = $this->request->getPOST('text');
+            $simpleAntiSpam = $this->request->getPOST('age');
+            if($simpleAntiSpam != null){
+                $validationState->setError('Spam', 'No Spam allowed');
+            }
 
-
+            
             if (!$name || empty($name)) {
                 $validationState->setError('Name', \Pvik\Core\Config::$config['Translations']['NewPost']['ErrorFieldEmpty']);
             } else if (strlen($name) < 4) {

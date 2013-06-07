@@ -64,7 +64,7 @@
                         <input class="input-block-level" type="text" name="email" placeholder="<?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['EmailPlaceholder']; ?>" value="<?php echo $request->isPost('email') ? $request->getPost('email') : ''; ?>">
                     </div>
                 </div>
-
+                <input id="age" class="age" type="text" name="age" value="">
                 <button type="submit" name="submit" class="btn"><?php echo \Pvik\Core\Config::$config['Translations']['PostDetails']['Submit']; ?></button>
             </fieldset>
         </form>

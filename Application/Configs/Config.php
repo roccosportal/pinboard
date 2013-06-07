@@ -27,7 +27,7 @@ self::$config['Routes'] = array(
 self::$config['NotificationMailer']['PreSubject'] = '[Pinboard]';
 self::$config['NotificationMailer']['From'] = 'noreply@example.com';
 
-self::$config['Version'] = '1.0.0';
+self::$config['Version'] = '1.1.0';
 
 $language = 'en';
 self::$config['Translations'] = array();

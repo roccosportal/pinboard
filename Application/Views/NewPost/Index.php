@@ -36,6 +36,8 @@
 
             </div>
         </div>
+        <input id="age" class="age" type="text" name="age" value="">
+
         <button type="submit" name="submit" class="btn btn-primary"><?php echo \Pvik\Core\Config::$config['Translations']['NewPost']['Submit']; ?></button>
     </fieldset>
 </form>
