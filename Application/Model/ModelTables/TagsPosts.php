@@ -7,7 +7,7 @@ class TagsPosts extends \Pvik\Database\ORM\ModelTable {
         $this->entityName = 'TagsPosts';
         $this->primaryKeyName = 'tagsPostsId';
         $this->fieldDefinition['tagsPostsId'] = array ('Type' => Type::PRIMARY_KEY);
-        $this->fieldDefinition['postId'] =  array ('Type' => Type::NORMAL);
+      
 
 
          $this->fieldDefinition['tagId'] = array(
@@ -18,6 +18,18 @@ class TagsPosts extends \Pvik\Database\ORM\ModelTable {
         $this->fieldDefinition['tag'] = array(
                'Type' => Type::FOREIGN_OBJECT,
                'ForeignKey' => 'tagId'
+       );
+        
+        
+        
+        $this->fieldDefinition['postId'] = array(
+              'Type' => Type::FOREIGN_KEY, 
+              'ModelTable' => 'Posts' 
+        );
+    
+        $this->fieldDefinition['post'] = array(
+               'Type' => Type::FOREIGN_OBJECT,
+               'ForeignKey' => 'postId'
        );
     }
 }

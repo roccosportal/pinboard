@@ -19,7 +19,7 @@ class Comments extends \Pvik\Database\ORM\ModelTable {
     
         $this->fieldDefinition['post'] = array(
                'Type' => Type::FOREIGN_OBJECT,
-               'ForeignKey' => 'PostId'
+               'ForeignKey' => 'postId'
        );
     }
 }
